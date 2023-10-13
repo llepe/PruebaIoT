@@ -16,6 +16,7 @@ configuration = {
 
 circuit = TkCircuit(configuration)
 @circuit.run
+
 def main ():
     
     # now just write the code you would use on a real Raspberry Pi
