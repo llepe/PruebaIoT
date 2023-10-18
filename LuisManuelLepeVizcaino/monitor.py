@@ -25,30 +25,31 @@ def main ():
     from gpiozero import LED, Button
     from time import sleep
     import psutil
-    
+    import log
+
     ledAmarillo = LED(21)
     ledRojo = LED(22)
 
-    print ("Inicio")
-
+    log.escribe("Inicio")
+    
     while True:
         porcentaje = psutil.cpu_percent()
-        print(porcentaje)
+        log.escribe(str(porcentaje))
         if porcentaje < 10:
-            print ("Esta bien")
+            log.escribe("Esta bien")
             ledAmarillo.off()
             ledRojo.off()
         elif porcentaje < 20:
-            print ("Alerta: CPU con carga media")
+            log.escribe("Alerta: CPU con carga media")
             ledAmarillo.on()
             ledRojo.off()
         else:
+            log.escribe("Emergencia: CPU con carga ALTA")
             ledAmarillo.on()
             ledRojo.on()
-            print ("Emergencia: CPU con carga ALTA")
         sleep(.5)
 
-    print ("Fin")
+    log.escribe("Fin")
 ########
 if (not is_rpi):
     circuit.run(main)
