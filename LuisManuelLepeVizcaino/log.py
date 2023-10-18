@@ -8,3 +8,10 @@ def escribe(strTexto):
     archivoLog.write(dt_string + ": "  + strTexto)
     archivoLog.write("\r\n")
     archivoLog.close()
+
+def lee():
+    archivoLog = open("log.txt", "r")
+    for x in range(3):
+        linea = archivoLog.read()
+        print (linea)
+    archivoLog.close()    
